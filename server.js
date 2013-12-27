@@ -5,6 +5,14 @@ var url = require('url');
 var commandName="tdtool";
 
 var tdtool={
+	init:function(){
+		tdtool.findUnits();
+	},
+	findUnits:function(){
+		exec(commandName+" -l "+unit, function(error, stdout, stderr){
+			console.log(stdout);
+		});
+	},
 	puts:function(error, stdout, stderr) { sys.puts(stdout) },
 
 	on:function(unit){
@@ -14,7 +22,7 @@ var tdtool={
 		exec(commandName+" -f "+unit, tdtool.puts);
 	}
 }
-
+tdtool.init();
 
 var http = require('http');
 http.createServer(function (req, res) {
