@@ -13,7 +13,11 @@ var unit={
 	},
 	onFor:function(milli){
 		this.on();
-		setTimeout(this.off, 10000);
+		setTimeout((function(){
+			return function(){
+				this.off.apply(this);
+			}
+		})(), 10000);
 	}
 }
 
