@@ -8,8 +8,12 @@ var unit={
 	on:function(){
 		exec(commandName+" -n "+this.id, tdtool.puts);
 	},
-	off:function(unit){
+	off:function(){
 		exec(commandName+" -f "+this.id, tdtool.puts);
+	},
+	onFor:function(milli){
+		this.on();
+		setTimeout(this.off, 10000);
 	}
 }
 
