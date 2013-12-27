@@ -61,7 +61,7 @@ http.createServer(function (req, res) {
   if(route[1]==="unit"){ //Control single unit
   	var unitId=route[2];
   	var action=route[3];
-  	tdtool[action](unitId);
+  	tdtool.units[0][action]();
   }
   res.end('OK\n');
 }).listen(1337, '192.168.1.80');
