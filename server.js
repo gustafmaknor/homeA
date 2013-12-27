@@ -24,7 +24,7 @@ var tdtool={
 			var unitCount=(lines[0].indexOf("devices")!=-1)?(lines[0].split(":"))[1].trim():0;
 			for(var i=1;i<lines.length;i++){
 				var fields=lines[i].match(/[^\t]+/g);
-				tdtool.units.push(object.create(unit, {
+				tdtool.units.push(Object.create(unit, {
 					id:{
 						value:fields[0],
 						writable: true,
