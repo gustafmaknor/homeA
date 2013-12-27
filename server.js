@@ -9,7 +9,7 @@ var tdtool={
 		tdtool.findUnits();
 	},
 	findUnits:function(){
-		exec(commandName+" -l "+unit, function(error, stdout, stderr){
+		exec(commandName+" -l ", function(error, stdout, stderr){
 			console.log(stdout);
 		});
 	},
