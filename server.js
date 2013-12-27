@@ -4,6 +4,15 @@ var url = require('url');
 
 var commandName="tdtool";
 
+var unit={
+	on:function(){
+		exec(commandName+" -n "+this.id, tdtool.puts);
+	},
+	off:function(unit){
+		exec(commandName+" -f "+this.id, tdtool.puts);
+	}
+}
+
 var tdtool={
 	units:[],
 	init:function(){
@@ -15,23 +24,33 @@ var tdtool={
 			var unitCount=(lines[0].indexOf("devices")!=-1)?(lines[0].split(":"))[1].trim():0;
 			for(var i=1;i<lines.length;i++){
 				var fields=lines[i].match(/[^\t]+/g);
-				tdtool.units.push({
-					id:fields[0],
-					name:fields[1],
-					statys:fields[2]
+				tdtool.units.push(object.create(unit, {
+					id:{
+						value:fields[0],
+						writable: true,
+      					enumerable: true,
+      					configurable: true
+					},
+					name:{
+						value:fields[1],
+						writable: true,
+      					enumerable: true,
+      					configurable: true
+					},
+					status:{
+						value:fields[2],
+						writable: true,
+      					enumerable: true,	
+      					configurable: true
+					}
 				});
 			}
 			console.log(JSON.stringify(tdtool.units));
 		});
 	},
-	puts:function(error, stdout, stderr) { sys.puts(stdout) },
+	puts:function(error, stdout, stderr) { sys.puts(stdout) }
 
-	on:function(unit){
-		exec(commandName+" -n "+unit, tdtool.puts);
-	},
-	off:function(unit){
-		exec(commandName+" -f "+unit, tdtool.puts);
-	}
+	
 }
 tdtool.init();
 
