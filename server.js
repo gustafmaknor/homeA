@@ -12,7 +12,9 @@ var tdtool={
 		exec(commandName+" -l ", function(error, stdout, stderr){
 			var lines=stdout.match(/[^\r\n]+/g);
 			var unitCount=(lines[0].indexOf("devices")!=-1)?(lines[0].split(":"))[1].trim():0;
-			console.log(unitCount);
+			for(var i=1;i<lines.length;i++){
+				console.log(lines[i]);
+			}
 
 		});
 	},
