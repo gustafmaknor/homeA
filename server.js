@@ -75,7 +75,7 @@ tdtool.init();
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  var uri=url.parse(req.url);
+  var uri=url.parse(req.url, true);
   var route=uri.pathname.split("/");
   if(route[1]==="unit"){ //Control single unit
   	var unitId=route[2];
