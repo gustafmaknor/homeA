@@ -11,7 +11,9 @@ var tdtool={
 	findUnits:function(){
 		exec(commandName+" -l ", function(error, stdout, stderr){
 			var lines=stdout.match(/[^\r\n]+/g);
-			console.log(lines);
+			var unitCount=(lines[0].indexOf("devices")!=-1)?(lines[0].split(":"))[1].trim():0;
+			console.log(unitCount);
+
 		});
 	},
 	puts:function(error, stdout, stderr) { sys.puts(stdout) },
