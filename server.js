@@ -20,6 +20,6 @@ http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   var route=url.parse(req.url).pathname.split("/");
 
-  res.end('Hello World\n'+route[0]);
+  res.end('Hello World\n'+route[1]);
 }).listen(1337, '192.168.1.80');
 console.log('Server running at http://127.0.0.1:1337/');
