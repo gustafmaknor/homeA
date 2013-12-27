@@ -43,7 +43,7 @@ var tdtool={
       					enumerable: true,	
       					configurable: true
 					}
-				});
+				}));
 			}
 			console.log(JSON.stringify(tdtool.units));
 		});
