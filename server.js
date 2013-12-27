@@ -13,7 +13,8 @@ var tdtool={
 			var lines=stdout.match(/[^\r\n]+/g);
 			var unitCount=(lines[0].indexOf("devices")!=-1)?(lines[0].split(":"))[1].trim():0;
 			for(var i=1;i<lines.length;i++){
-				console.log(lines[i]);
+				var fields=lines[i].match(/[^\t]+/g);
+				console.log(fields);
 			}
 
 		});
