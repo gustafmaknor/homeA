@@ -32,7 +32,7 @@ var tdtool={
 				return tdtool.units[i];
 			}
 		}
-	}
+	},
 	findUnits:function(){
 		exec(commandName+" -l ", function(error, stdout, stderr){
 			var lines=stdout.match(/[^\r\n]+/g);
