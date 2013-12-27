@@ -18,7 +18,7 @@ function of(unit){
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  route=url.parse(req.url).pathname.split("/");
+  var route=url.parse(req.url).pathname.split("/");
 
   res.end('Hello World\n'+route[0]);
 }).listen(1337, '192.168.1.80');
