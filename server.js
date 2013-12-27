@@ -5,6 +5,7 @@ var url = require('url');
 var commandName="tdtool";
 
 var tdtool={
+	units:[],
 	init:function(){
 		tdtool.findUnits();
 	},
@@ -14,9 +15,13 @@ var tdtool={
 			var unitCount=(lines[0].indexOf("devices")!=-1)?(lines[0].split(":"))[1].trim():0;
 			for(var i=1;i<lines.length;i++){
 				var fields=lines[i].match(/[^\t]+/g);
-				console.log(fields);
+				tdtool.units.push({
+					id:fields[0],
+					name:fields[1],
+					statys:fields[2]
+				});
 			}
-
+			console.log(JSON.stringify(this.units));
 		});
 	},
 	puts:function(error, stdout, stderr) { sys.puts(stdout) },
