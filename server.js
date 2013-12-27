@@ -11,13 +11,13 @@ var unit={
 	off:function(){
 		exec(commandName+" -f "+this.id, tdtool.puts);
 	},
-	onFor:function(milli){
+	onFor:function(settings){
 		this.on();
 		setTimeout((function(ctx){
 			return function(){
 				ctx.off.apply(ctx);
 			}
-		})(this), 10000);
+		})(this), settings.time);
 	}
 }
 
@@ -26,6 +26,13 @@ var tdtool={
 	init:function(){
 		tdtool.findUnits();
 	},
+	getById:function(id){
+		for(var i=0;i>tdtool.units.length;i++){
+			if(tdtool.units[i].id==id){
+				return tdtool.units[i];
+			}
+		}
+	}
 	findUnits:function(){
 		exec(commandName+" -l ", function(error, stdout, stderr){
 			var lines=stdout.match(/[^\r\n]+/g);
@@ -65,11 +72,12 @@ tdtool.init();
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  var route=url.parse(req.url).pathname.split("/");
+  var uri=url.parse(req.url);
+  var route=uri.pathname.split("/");
   if(route[1]==="unit"){ //Control single unit
   	var unitId=route[2];
   	var action=route[3];
-  	tdtool.units[0][action]();
+  	tdtool.getById(unitId)[action](uri.query);
   }
   res.end('OK\n');
 }).listen(1337, '192.168.1.80');
