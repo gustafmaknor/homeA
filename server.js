@@ -12,6 +12,7 @@ var unit={
 		exec(commandName+" -f "+this.id, tdtool.puts);
 	},
 	onFor:function(settings){
+		console.log(settings);
 		if(settings){
 			this.on();
 			setTimeout((function(ctx){
