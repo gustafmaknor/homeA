@@ -27,7 +27,7 @@ var tdtool={
 		tdtool.findUnits();
 	},
 	getById:function(id){
-		for(var i=0;i>tdtool.units.length;i++){
+		for(var i=0;i<tdtool.units.length;i++){
 			if(tdtool.units[i].id==id){
 				return tdtool.units[i];
 			}
