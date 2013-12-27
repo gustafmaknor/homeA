@@ -21,7 +21,7 @@ var tdtool={
 					statys:fields[2]
 				});
 			}
-			console.log(JSON.stringify(this.units));
+			console.log(JSON.stringify(tdtool.units));
 		});
 	},
 	puts:function(error, stdout, stderr) { sys.puts(stdout) },
