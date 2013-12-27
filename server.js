@@ -15,7 +15,7 @@ var unit={
 		this.on();
 		setTimeout((function(ctx){
 			return function(){
-				ctx.off.apply(this);
+				ctx.off.apply(ctx);
 			}
 		})(this), 10000);
 	}
