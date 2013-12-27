@@ -10,7 +10,8 @@ var tdtool={
 	},
 	findUnits:function(){
 		exec(commandName+" -l ", function(error, stdout, stderr){
-			console.log(stdout);
+			var lines=stdout.match(/[^\r\n]+/g);
+			console.log(lines);
 		});
 	},
 	puts:function(error, stdout, stderr) { sys.puts(stdout) },
