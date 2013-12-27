@@ -12,12 +12,14 @@ var unit={
 		exec(commandName+" -f "+this.id, tdtool.puts);
 	},
 	onFor:function(settings){
-		this.on();
-		setTimeout((function(ctx){
-			return function(){
-				ctx.off.apply(ctx);
-			}
-		})(this), settings.time);
+		if(settings){
+			this.on();
+			setTimeout((function(ctx){
+				return function(){
+					ctx.off.apply(ctx);
+				}
+			})(this), settings.time || 1000);
+		}
 	}
 }
 
