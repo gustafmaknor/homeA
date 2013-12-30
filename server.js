@@ -29,7 +29,8 @@ telldus.getDevices(function(err,dev) {
     	}
     }
     devices=dev;
-    devices.getById(4).on();
+    console.log(devices);
+    //devices.getById(4).on();
   }
 });
 
