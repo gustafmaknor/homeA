@@ -1,7 +1,7 @@
 var sys = require('sys');
 var exec = require('child_process').exec;
 var url = require('url');
-var telldu=require('telldus');
+var telldus=require('telldus');
 
 telldus.getDevices(function(err,devices) {
   if ( err ) {
