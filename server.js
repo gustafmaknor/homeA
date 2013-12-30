@@ -26,7 +26,7 @@ var listener = telldus.addRawDeviceEventListener(function(controllerId, data) {
   console.log(controllerId+ 'Raw device event: ' + data);
 });
 
-var decoration=[
+var decoration={
 		TURNON:{
 			on:function(){
 				telldus.turnOn(this.id,function(err) {
@@ -51,7 +51,7 @@ var decoration=[
 			}
 
 		}
-]
+}
 
 
 
