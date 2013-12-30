@@ -20,7 +20,7 @@ telldus.getDevices(function(err,dev) {
     }
     console.log(dev);
     devices=dev;
-    devices[0].on();
+    devices[0].off();
   }
 });
 
