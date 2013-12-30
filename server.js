@@ -13,7 +13,7 @@ telldus.getDevices(function(err,dev) {
     	for(var j=0;j<dev[i].methods.length;j++){
     		if(decoration[dev[i].methods[j]]!==undefined){
     			for(var p in decoration[dev[i].methods[j]]){
-    				dev[p]=p;
+    				dev[p]=decoration[dev[i].methods[j]][p];
     			}
     		}
     	}
