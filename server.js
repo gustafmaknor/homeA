@@ -3,12 +3,12 @@ var telldus=require('telldus');
 
 var devices=[];
 devices.getById=function(id){
-	for(var i in this.length;i++){
+	for(var i=0;i<this.length;i++){
 		if(this[i].id==id) { return this[i]; }
 	}
 }
 devices.getByName=function(name){
-	for(var i in this.length;i++){
+	for(var i=0;i<this.length;i++){
 		if(this[i].name==name) { return this[i]; }
 	}
 }
