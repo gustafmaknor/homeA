@@ -12,6 +12,11 @@ telldus.getDevices(function(err,devices) {
   }
 });
 
+var listener = telldus.addRawDeviceEventListener(function(controllerId, data) {
+  console.log('Raw device event: ' + data);
+});
+
+/*
 var commandName="tdtool";
 
 var unit={
@@ -95,3 +100,5 @@ http.createServer(function (req, res) {
   res.end('OK\n');
 }).listen(1337, '192.168.1.80');
 console.log('Server running at http://127.0.0.1:1337/');
+
+*/
