@@ -9,7 +9,7 @@ telldus.getDevices(function(err,dev) {
   } else {
     // A list of all configured devices is returned
     
-    for(var i=0;<dev.length;i++){
+    for(var i=0;i<dev.length;i++){
     	for(var j=0;j<dev[i].methods.length;j++){
     		if(decoration[dev[i].methods[j]]!==undefined){
     			for(var p in decoration[dev[i].methods[j]]){
