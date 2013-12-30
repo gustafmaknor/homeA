@@ -73,7 +73,19 @@ var decoration={
 }
 
 
+//event example
+var event={
+	deviceid:4,
+	action:'on',
+	datetime:'20131231'
+	start:null,
+	end:null
+}
+var events=[];
 
+var rule={};
+
+var rules=[];
 /*
 var commandName="tdtool";
 
