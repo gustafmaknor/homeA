@@ -102,3 +102,17 @@ http.createServer(function (req, res) {
 console.log('Server running at http://127.0.0.1:1337/');
 
 */
+
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  var uri=url.parse(req.url, true);
+  var route=uri.pathname.split("/");
+  if(route[1]==="unit"){ //Control single unit
+  	var unitId=route[2];
+  	var action=route[3];
+  	tdtool.getById(unitId)[action](uri.query);
+  }
+  res.end('OK\n');
+}).listen(1337, '192.168.1.80');
+console.log('Server running at http://127.0.0.1:1337/');
