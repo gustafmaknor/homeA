@@ -1,20 +1,59 @@
-var sys = require('sys');
-var exec = require('child_process').exec;
 var url = require('url');
 var telldus=require('telldus');
 
-telldus.getDevices(function(err,devices) {
+var devices=[];
+
+telldus.getDevices(function(err,dev) {
   if ( err ) {
     console.log('Error: ' + err);
   } else {
     // A list of all configured devices is returned
-    console.log(devices);
+    
+    for(var i=0;<dev.length;i++){
+    	for(var j=0;j<dev[i].methods.length;j++){
+    		if(decoration[dev[i].methods[j]]!==undefined){
+    			for(var p in decoration[dev[i].methods[j]]){
+    				dev[p]=p;
+    			}
+    		}
+    	}
+    }
+    console.log(dev);
   }
 });
 
 var listener = telldus.addRawDeviceEventListener(function(controllerId, data) {
   console.log(controllerId+ 'Raw device event: ' + data);
 });
+
+var decoration=[
+		TURNON:{
+			on:function(){
+				telldus.turnOn(this.id,function(err) {
+  					console.log('ON');
+				});
+			},
+			off:function(){
+				telldus.turnOff(this.id,function(err) {
+  					console.log('OFF');
+				});
+			},
+			onFor:function(settings){
+				console.log(JSON.stringify(settings));
+				if(settings){
+					this.on();
+					setTimeout((function(ctx){
+						return function(){
+							ctx.off.apply(ctx);
+						}
+					})(this), settings.time || 1000);
+				}
+			}
+
+		}
+]
+
+
 
 /*
 var commandName="tdtool";
