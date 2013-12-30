@@ -2,6 +2,16 @@ var url = require('url');
 var telldus=require('telldus');
 
 var devices=[];
+devices.getById=function(id){
+	for(var i in this.length;i++){
+		if(this[i].id==id) { return this[i]; }
+	}
+}
+devices.getByName=function(name){
+	for(var i in this.length;i++){
+		if(this[i].name==name) { return this[i]; }
+	}
+}
 
 telldus.getDevices(function(err,dev) {
   if ( err ) {
@@ -18,9 +28,8 @@ telldus.getDevices(function(err,dev) {
     		}
     	}
     }
-    console.log(dev);
     devices=dev;
-    devices[0].on();
+    devices.getById(4).on();
   }
 });
 
