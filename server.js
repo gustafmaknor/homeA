@@ -13,7 +13,7 @@ telldus.getDevices(function(err,devices) {
 });
 
 var listener = telldus.addRawDeviceEventListener(function(controllerId, data) {
-  console.log('Raw device event: ' + data);
+  console.log(controllerId+ 'Raw device event: ' + data);
 });
 
 /*
