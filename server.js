@@ -1,6 +1,16 @@
 var sys = require('sys');
 var exec = require('child_process').exec;
 var url = require('url');
+var telldu=require('telldus');
+
+telldus.getDevices(function(err,devices) {
+  if ( err ) {
+    console.log('Error: ' + err);
+  } else {
+    // A list of all configured devices is returned
+    console.log(deviceList);
+  }
+});
 
 var commandName="tdtool";
 
@@ -63,7 +73,7 @@ var tdtool={
 					}
 				}));
 			}
-			console.log(JSON.stringify(tdtool.units));
+			//console.log(JSON.stringify(tdtool.units));
 		});
 	},
 	puts:function(error, stdout, stderr) { sys.puts(stdout) }
