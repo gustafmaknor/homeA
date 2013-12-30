@@ -19,6 +19,8 @@ telldus.getDevices(function(err,dev) {
     	}
     }
     console.log(dev);
+    devices=dev;
+    devices[0].on();
   }
 });
 
@@ -47,6 +49,14 @@ var decoration={
 							ctx.off.apply(ctx);
 						}
 					})(this), settings.time || 1000);
+				}
+			},
+			toogle:function(){
+				if(this.status.name="ON"){
+					this.off();
+				}
+				else{
+					this.on();
 				}
 			}
 
