@@ -24,13 +24,12 @@ telldus.getDevices(function(err,dev) {
     		if(decoration[dev[i].methods[j]]!==undefined){
     			for(var p in decoration[dev[i].methods[j]]){
     				dev[i][p]=decoration[dev[i].methods[j]][p];
+    				devices.push(dev[i]);
     			}
     		}
     	}
     }
-    devices=dev;
-    console.log(devices);
-    //devices.getById(4).on();
+    devices.getById(4).on();
   }
 });
 
