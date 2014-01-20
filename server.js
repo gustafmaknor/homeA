@@ -24,13 +24,13 @@ telldus.getDevices(function(err,dev) {
     		if(decoration[dev[i].methods[j]]!==undefined){
     			for(var p in decoration[dev[i].methods[j]]){
     				dev[i][p]=decoration[dev[i].methods[j]][p];
-    				devices.push(dev[i]);
     			}
     		}
     	}
+    	devices.push(dev[i]);
     }
-    devices.getById(4).on();
   }
+  devices.getById(2).off();
 });
 
 var listener = telldus.addRawDeviceEventListener(function(controllerId, data) {
@@ -72,8 +72,25 @@ var decoration={
 		}
 }
 
-
-
+var clock={
+	lastTick:new Date(),
+	init:function(){
+		clock.precision=30000;
+		setInterval((function(ctx){
+			return function(){
+				var curr=new Date();
+				if(curr.getMinutes()!=ctx.lastTick.getMinutes()){
+					ctx.tick(curr);
+				}
+			}
+		})(clock), clock.precision);
+	},
+	tick:function(curr){
+		clock.lastTick=curr;
+		console.log(clock.lastTick);
+	}
+}
+clock.init();
 /*
 var commandName="tdtool";
 
